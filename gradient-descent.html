@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gradient Descent From Scratch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h2>My Portfolio</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#writing">Writing</a>
+        </div>
+    </nav>
+
+    <main>
+        <a href="index.html#projects" class="back-link">
+            ← Back to Projects
+        </a>
+
+        <article class="project-detail">
+            <h1>Gradient Descent From Scratch</h1>
+
+            <p class="project-intro">
+                An exploration of gradient-based optimization,
+                step-size selection, and convergence behavior
+                through a Python implementation.
+            </p>
+
+            <div class="project-tags">
+                <span>Python</span>
+                <span>Optimization</span>
+                <span>Numerical Methods</span>
+            </div>
+
+            <h2>Overview</h2>
+            <p>
+                I built a gradient descent optimizer from scratch in Python
+                 to explore the relationship between mathematical convergence
+                  theory and practical algorithm performance. I investigated 
+                  different step-size strategies and implemented a theoretically 
+                  motivated improvement to accelerate convergence.
+            </p>
+
+            <h2>Mathematical Background</h2>
+            <p>
+                Gradient descent updates a parameter vector
+                by moving in the direction of the negative
+                gradient.
+            </p>
+
+            <div class="equation">
+                x<sub>k+1</sub> = x<sub>k</sub>
+                - &alpha;&nabla;f(x<sub>k</sub>)
+            </div>
+
+            <p>
+                The step size determines the magnitude of
+                each update. A poorly chosen step size can
+                slow convergence or cause instability.
+            </p>
+
+            <h2>Improving Convergence</h2>
+            <p>
+                I explored analytically motivated step-size
+                selection and incorporated an optimal
+                step-size result under suitable assumptions,
+                reducing the number of iterations required
+                for convergence in my experiments.
+            </p>
+
+            <h2>Results and Visualization</h2>
+            <p>
+                Convergence plots and experimental comparisons
+                will be added here as I refine the project.
+            </p>
+
+            <h2>Source Code</h2>
+            <p>
+                <a href="https://github.com/YOUR_USERNAME/YOUR_REPO"
+                   target="_blank" rel="noopener noreferrer">
+                    View the project on GitHub ↗
+                </a>
+            </p>
+        </article>
+    </main>
+</body>
+</html>

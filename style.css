@@ -1,0 +1,106 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf2ff;
+    color: #222;
+    margin: 0;
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 25px;
+}
+
+section {
+    margin-bottom: 80px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.project {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+/* Clickable project cards */
+
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card .project {
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.project-card:hover .project {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.read-more {
+    color: #3454a1;
+    font-weight: bold;
+}
+
+/* Individual project pages */
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 35px;
+    text-decoration: none;
+    color: #3454a1;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.project-detail {
+    max-width: 760px;
+}
+
+.project-detail h1 {
+    margin-bottom: 15px;
+}
+
+.project-intro {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.project-detail h2 {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.project-detail p {
+    line-height: 1.8;
+}
