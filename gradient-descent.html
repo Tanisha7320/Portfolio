@@ -90,12 +90,69 @@
                 reducing the number of iterations required
                 for convergence in my experiments.
             </p>
+        
+           
 
-            <h2>Results and Visualization</h2>
-            <p>
-                Convergence plots and experimental comparisons
-                will be added here as I refine the project.
-            </p>
+<section>
+    <h2>Improving Convergence Through Normalization</h2>
+
+    <p>
+        To investigate the effect of feature scaling on
+        optimization, I computed the eigenvalue spectrum
+        of the Hessian before and after normalizing the data.
+    </p>
+
+    <p>
+        For a symmetric positive-definite Hessian
+        \(H\), the spectral condition number is defined as
+    </p>
+
+    \[
+        \kappa(H) =
+        \frac{\lambda_{\max}(H)}
+             {\lambda_{\min}(H)}.
+    \]
+
+    <p>
+        Before normalization, the eigenvalues spanned
+        several orders of magnitude, resulting in a
+        condition number of approximately
+        \(5.9 \times 10^{10}\).
+    </p>
+
+    <p>
+        After normalization, the condition number
+        decreased to approximately \(20.88\),
+        indicating a substantially better-conditioned
+        optimization problem.
+    </p>
+
+    <figure>
+        <img
+            src="hessain_analysis.png"
+            alt="Comparison of Hessian eigenvalue spectra
+                 before and after normalization"
+            class="project-image"
+        >
+
+        <figcaption class="image-caption">
+            Figure 1: Hessian eigenvalue spectra before
+            and after normalization. The condition number
+            decreases from approximately
+            \(5.9 \times 10^{10}\) to \(20.88\).
+        </figcaption>
+    </figure>
+
+    <p>
+        For a strongly convex quadratic objective,
+        the convergence rate of gradient descent
+        depends on the condition number of the Hessian.
+        The substantial reduction in the condition number
+        suggests that normalization can enable much faster
+        convergence with an appropriately chosen step size.
+    </p>
+</section>
+
 
             <h2>Source Code</h2>
             <p>

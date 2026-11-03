@@ -162,10 +162,16 @@ h1, h2, h3, h4 {
 
 /* Mathematical Equations */
 
+
 .equation {
-    background-color: #EAF2E9;
+    background: transparent;
     color: #234D36;
+    padding: 0;
+    border: none;
+    text-align: center;
+    font-size: 20px;
 }
+
 
 /* Contact Section */
 
@@ -173,11 +179,41 @@ h1, h2, h3, h4 {
     border-top: 1px solid #D6E5D5;
 }
 
+
 .email-button {
-    background-color: #234D36;
-    color: white;
+    display: inline-block;
+    background: transparent;
+    color: #234D36;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .email-button:hover {
-    background-color: #376B4A;
+    background: transparent;
+    color: #5F8A6B;
+    text-decoration: underline;
+}
+
+
+figure {
+    margin: 30px 0;
+}
+
+.project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 14px;
+    color: #667568;
+    margin-top: 12px;
+    line-height: 1.6;
 }
