@@ -8,6 +8,20 @@
 
     <title>Gradient Descent From Scratch</title>
     <link rel="stylesheet" href="style.css">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']]
+    }
+  };
+</script>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
 </head>
 
 <body>
@@ -57,9 +71,10 @@
             </p>
 
             <div class="equation">
-                x<sub>k+1</sub> = x<sub>k</sub>
-                - &alpha;&nabla;f(x<sub>k</sub>)
-            </div>
+    \[
+        x_{k} = x_{k-1} - \gamma \nabla f(x_{k-1})
+    \]
+</div>
 
             <p>
                 The step size determines the magnitude of

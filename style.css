@@ -104,3 +104,80 @@ h1 {
 .project-detail p {
     line-height: 1.8;
 }
+
+/* Green Portfolio Theme */
+
+body {
+    background-color: #F8FAF7;
+    color: #253B2C;
+}
+
+nav {
+    background-color: #EAF2E9;
+    border-bottom: 1px solid #D6E5D5;
+}
+
+nav h2 {
+    color: #234D36;
+}
+
+nav a {
+    color: #234D36;
+}
+
+nav a:hover {
+    color: #5F8A6B;
+}
+
+h1, h2, h3, h4 {
+    color: #234D36;
+}
+
+/* Project Cards */
+
+.project {
+    background-color: #FFFFFF;
+    border: 1px solid #D6E5D5;
+}
+
+.project-card:hover .project {
+    border-color: #5F8A6B;
+    box-shadow: 0 8px 24px rgba(35, 77, 54, 0.10);
+}
+
+/* Project Tags */
+
+.project-tags span {
+    background-color: #EAF2E9;
+    color: #234D36;
+}
+
+/* Links */
+
+.project a,
+.read-more,
+.back-link {
+    color: #2F6947;
+}
+
+/* Mathematical Equations */
+
+.equation {
+    background-color: #EAF2E9;
+    color: #234D36;
+}
+
+/* Contact Section */
+
+#contact {
+    border-top: 1px solid #D6E5D5;
+}
+
+.email-button {
+    background-color: #234D36;
+    color: white;
+}
+
+.email-button:hover {
+    background-color: #376B4A;
+}
