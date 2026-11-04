@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospect Theory in Q-Learning | Tanisha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav aria-label="Main navigation">
+    <a class="brand" href="index.html">Tanisha<span>.</span></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+</nav>
+
+
+    <main id="main">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+        <article class="project-detail">
+            <p class="eyebrow">02 / Reinforcement Learning</p>
+            <h1>Prospect Theory in Q-Learning</h1>
+            <p class="project-intro">
+                What changes when a Q-learning agent treats a reward below its expectations as a loss?
+            </p>
+            <div class="project-tags">
+                <span>Python</span>
+                <span>Gymnasium</span>
+                <span>Behavioral Economics</span>
+            </div>
+
+            <h2>Experiment</h2>
+            <p>
+                I trained two tabular Q-learning agents on Gymnasium’s slippery FrozenLake,
+                where the agent’s intended move can lead to an unexpected tile.
+                Both agents use the same update rule. One receives the environment’s
+                original rewards, while the other learns from transformed rewards.
+            </p>
+
+            <h2>Modeling loss aversion</h2>
+            <p>
+                I built a reward wrapper that evaluates each reward relative to a
+                reference point of 0.01. A zero reward therefore becomes a small penalty.
+                The wrapper uses a power of 0.88 for both gains and losses, and scales losses
+                by 2.25 to give them more weight than equivalent gains.
+            </p>
+
+            <h2>Reading the training curves</h2>
+            <p>
+                The script plots a 50-episode moving average for each agent.
+                The curves use different reward scales, so their heights show how each
+                training signal evolves. Comparing navigation performance would require
+                evaluating both agents with a shared metric such as goal-reaching rate.
+            </p>
+
+            <h2>Source code</h2>
+            <p>
+                <a href="https://github.com/Tanisha7320/prospect_theory"
+                   target="_blank" rel="noopener noreferrer">View the project on GitHub ↗</a>
+            </p>
+        </article>
+    </main>
+</body>
+</html>
