@@ -57,107 +57,87 @@
                 <span>Numerical Methods</span>
             </div>
 
-            <h2>Overview</h2>
+            <h2>Fitting a least-squares model</h2>
             <p>
-                I built a gradient descent optimizer from scratch in Python
-                 to explore the relationship between mathematical convergence
-                  theory and practical algorithm performance. I investigated 
-                  different step-size strategies and implemented a theoretically 
-                  motivated improvement to accelerate convergence.
+                I implemented full-batch gradient descent in NumPy to predict house price
+                per unit area from six features. The training design matrix had 331 rows
+                and seven columns, including a column of ones for the intercept.
             </p>
-
-            <h2>Mathematical Background</h2>
             <p>
-                Gradient descent updates a parameter vector
-                by moving in the direction of the negative
-                gradient.
+                For the training design matrix \(X\), target vector \(y\), and coefficient
+                vector \(w\), the update used the mean squared error gradient and its
+                constant Hessian.
             </p>
-
             <div class="equation">
-    \[
-        x_{k} = x_{k-1} - \gamma \nabla f(x_{k-1})
-    \]
-</div>
+                \[
+                \nabla f(w)=\frac{2}{n}X^\top(Xw-y), \qquad
+                H=\frac{2}{n}X^\top X.
+                \]
+            </div>
 
+            <h2>What normalization changed</h2>
             <p>
-                The step size determines the magnitude of
-                each update. A poorly chosen step size can
-                slow convergence or cause instability.
+                I compared the Hessian spectra of the raw and normalized training
+                features before adding the intercept. The condition number, the ratio
+                of the largest to smallest eigenvalue, dropped from approximately
+                \(5.88\times10^{10}\) to \(20.88\). A wide spread in curvature forces
+                a fixed step size to accommodate the steepest direction, which can
+                make progress along flatter directions slow.
+            </p>
+            <figure>
+                <img src="hessain_analysis.png" class="project-image"
+                     alt="Log-scale Hessian spectra showing a much narrower spread after normalization">
+                <figcaption class="image-caption">
+                    Hessian eigenvalues for the raw and normalized feature matrices.
+                </figcaption>
+            </figure>
+
+            <h2>Choosing the step size</h2>
+            <p>
+                For a positive-definite quadratic with Hessian eigenvalues between
+                \(\mu\) and \(L\), the fixed step size that minimizes the worst-case
+                contraction of the coefficient error is \(2/(L+\mu)\). The feature-only
+                spectrum suggested a step size of about 0.351, which I tested on the
+                model with an intercept.
+            </p>
+            <p>
+                Starting from zero and stopping when the gradient norm fell below
+                \(10^{-6}\), the baseline step size of 0.01 took 5,216 updates.
+                The 0.351 step size reached the same threshold in 176 updates,
+                about 30 times fewer.
+            </p>
+            <figure>
+                <img src="gradient-convergence.png" class="project-image" loading="lazy"
+                     alt="Gradient norm and objective value falling over the run with step size 0.351">
+                <figcaption class="image-caption">
+                    Convergence with a step size of 0.351. The notebook’s objective
+                    plot tracks half the mean squared error.
+                </figcaption>
+            </figure>
+
+            <h2>Checking the solution</h2>
+            <p>
+                The baseline coefficients were within \(3.84\times10^{-6}\) in
+                Euclidean distance of the normal-equation solution. In the recorded
+                run, the baseline loop took about 40.4 ms and the normal-equation
+                calculation took about 0.46 ms. The loop timing excluded the
+                Hessian setup. On this small dataset, the direct calculation was faster.
             </p>
 
-            <h2>Improving Convergence</h2>
+            <h2>Held-out predictions</h2>
             <p>
-                I explored analytically motivated step-size
-                selection and incorporated an optimal
-                step-size result under suitable assumptions,
-                reducing the number of iterations required
-                for convergence in my experiments.
+                With the 0.351 step size, the fitted model reached an MSE of 65.47 on
+                the training set and 125.17 on the held-out test set. The higher test
+                error motivates evaluating ridge regularization, which the notebook
+                outlines as a next experiment.
             </p>
-        
-           
-
-<section>
-    <h2>Improving Convergence Through Normalization</h2>
-
-    <p>
-        To investigate the effect of feature scaling on
-        optimization, I computed the eigenvalue spectrum
-        of the Hessian before and after normalizing the data.
-    </p>
-
-    <p>
-        For a symmetric positive-definite Hessian
-        \(H\), the spectral condition number is defined as
-    </p>
-
-    <div class="equation">
-    \[
-        \kappa(H) =
-        \frac{\lambda_{\max}(H)}
-             {\lambda_{\min}(H)}.
-    \]
-    </div>
-
-    <p>
-        Before normalization, the eigenvalues spanned
-        several orders of magnitude, resulting in a
-        condition number of approximately
-        \(5.9 \times 10^{10}\).
-    </p>
-
-    <p>
-        After normalization, the condition number
-        decreased to approximately \(20.88\),
-        indicating a substantially better-conditioned
-        optimization problem.
-    </p>
-
-    <figure>
-        <img
-            src="hessain_analysis.png"
-            alt="Comparison of Hessian eigenvalue spectra
-                 before and after normalization"
-            class="project-image"
-        >
-
-        <figcaption class="image-caption">
-            Figure 1: Hessian eigenvalue spectra before
-            and after normalization. The condition number
-            decreases from approximately
-            \(5.9 \times 10^{10}\) to \(20.88\).
-        </figcaption>
-    </figure>
-
-    <p>
-        For a strongly convex quadratic objective,
-        the convergence rate of gradient descent
-        depends on the condition number of the Hessian.
-        The substantial reduction in the condition number
-        suggests that normalization can enable much faster
-        convergence with an appropriately chosen step size.
-    </p>
-</section>
-
+            <figure>
+                <img src="gradient-predictions.png" class="project-image" loading="lazy"
+                     alt="Scatter plot of predicted and actual test prices with a diagonal perfect-prediction line">
+                <figcaption class="image-caption">
+                    Predicted versus actual test prices. The diagonal marks perfect predictions.
+                </figcaption>
+            </figure>
 
             <h2>Source Code</h2>
             <p>
