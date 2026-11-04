@@ -1,219 +1,153 @@
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #eaf2ff;
-    color: #222;
-    margin: 0;
-    line-height: 1.6;
+:root {
+    color-scheme: light;
+    --paper: #f7f8f3;
+    --ink: #182d25;
+    --muted: #4c6156;
+    --accent: #245640;
+    --line: #d1ded4;
+    --soft: #e8f0e7;
 }
 
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 1rem/1.65 system-ui, sans-serif;
+}
+
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid #28764f; outline-offset: 5px; }
+.skip { position: absolute; top: 0; left: 1rem; transform: translateY(-150%); }
+.skip:focus { transform: none; background: white; padding: .5rem 1rem; z-index: 1; }
+
+nav, main { width: min(100% - 2rem, 67rem); margin-inline: auto; }
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10%;
-    background-color: white;
+    flex-wrap: wrap;
+    gap: .25rem 1.5rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
+.brand { font-weight: 800; font-size: 1.35rem; text-decoration: none; color: var(--ink); }
+.brand span, #about h1 span { color: #397553; }
+.nav-links { display: flex; flex-wrap: wrap; gap: .25rem clamp(.5rem, 2vw, 1.5rem); }
+.nav-links a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 600; }
+.nav-links a:hover, .back-link:hover { text-decoration: underline; text-underline-offset: .25em; }
 
-nav a {
+main { padding-block: clamp(2rem, 5vw, 4.5rem); }
+main > section + section { margin-top: clamp(2.75rem, 7vw, 5.5rem); }
+#about, #contact {
+    padding: clamp(1.5rem, 6vw, 4.5rem);
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    background: var(--soft);
+}
+#about { background: radial-gradient(ellipse at top right, #cfe4d1, transparent 70%), var(--soft); }
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -.035em;
+}
+h1 { font-size: clamp(2.6rem, 8vw, 6rem); }
+h2 { font-size: clamp(1.85rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.65rem, 4vw, 2.4rem); }
+p { color: var(--muted); max-width: 65ch; }
+#about h1 + p, .project-intro { font-size: clamp(1.1rem, 2vw, 1.35rem); }
+#about h1 + p { max-width: 48ch; }
+
+.eyebrow {
+    margin: 0 0 .85rem;
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.actions, .project-tags { display: flex; flex-wrap: wrap; gap: .65rem; }
+.actions { margin-top: 1.6rem; }
+.button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: .55rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: .55rem;
+    background: var(--accent);
+    color: white;
+    font-weight: 650;
     text-decoration: none;
-    color: #333;
 }
-
-main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 25px;
-}
-
-section {
-    margin-bottom: 80px;
-}
-
-h1 {
-    font-size: 48px;
-}
-
-.project {
-    background-color: white;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-}
-
-/* Clickable project cards */
+.button.secondary { background: transparent; color: var(--accent); }
+.button:hover { background: #163e2b; color: white; }
 
 .project-card {
     display: block;
+    margin-top: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: white;
     text-decoration: none;
     color: inherit;
 }
-
-.project-card .project {
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
-}
-
-.project-card:hover .project {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.read-more {
-    color: #234D36;
-    font-weight: bold;
-}
-
-/* Individual project pages */
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 35px;
-    text-decoration: none;
-    color: #234D36;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-}
-
-.project-detail {
-    max-width: 760px;
-}
-
-.project-detail h1 {
-    margin-bottom: 15px;
-}
-
-.project-intro {
-    font-size: 20px;
-    color: #555;
-    line-height: 1.7;
-}
-
-.project-detail h2 {
-    margin-top: 50px;
-    margin-bottom: 15px;
-}
-
-.project-detail p {
-    line-height: 1.8;
-}
-
-/* Green Portfolio Theme */
-
-body {
-    background-color: #F8FAF7;
-    color: #253B2C;
-}
-
-nav {
-    background-color: #EAF2E9;
-    border-bottom: 1px solid #D6E5D5;
-}
-
-nav h2 {
-    color: #234D36;
-}
-
-nav a {
-    color: #234D36;
-}
-
-nav a:hover {
-    color: #5F8A6B;
-}
-
-h1, h2, h3, h4 {
-    color: #234D36;
-}
-
-/* Project Cards */
-
-.project {
-    background-color: #FFFFFF;
-    border: 1px solid #D6E5D5;
-}
-
-.project-card:hover .project {
-    border-color: #5F8A6B;
-    box-shadow: 0 8px 24px rgba(35, 77, 54, 0.10);
-}
-
-/* Project Tags */
-
+.project-card:hover, .project-card:focus-visible { border-color: var(--accent); box-shadow: 0 8px 24px #182d2512; }
+.project { padding: clamp(1.25rem, 4vw, 2.75rem); }
 .project-tags span {
-    background-color: #EAF2E9;
-    color: #234D36;
-}
-
-/* Links */
-
-.project a,
-.read-more,
-.back-link {
-    color: #2F6947;
-}
-
-/* Mathematical Equations */
-
-
-.equation {
-    background: transparent;
-    color: #234D36;
-    padding: 0;
-    border: none;
-    text-align: center;
-    font-size: 20px;
-}
-
-
-/* Contact Section */
-
-#contact {
-    border-top: 1px solid #D6E5D5;
-}
-
-
-.email-button {
-    display: inline-block;
-    background: transparent;
-    color: #234D36;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    text-decoration: none;
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--accent);
+    font-size: .82rem;
     font-weight: 600;
-    transition: color 0.2s ease;
+}
+.read-more { display: inline-block; margin-top: 1.25rem; color: var(--accent); font-weight: 700; }
+.project-card:hover .read-more { text-decoration: underline; text-underline-offset: .25em; }
+
+.back-link { display: inline-block; padding-block: .55rem; margin-bottom: 1.25rem; font-weight: 650; text-decoration: none; }
+.project-detail { max-width: 49rem; margin-inline: auto; }
+.project-detail h1 { font-size: clamp(2.55rem, 7vw, 5rem); }
+.project-detail h2 { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.equation, figure {
+    margin: 1.5rem 0;
+    padding: clamp(.65rem, 3vw, 1.5rem);
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: .75rem;
+}
+.equation { overflow-x: auto; text-align: center; }
+.project-image { display: block; width: 100%; height: auto; }
+.image-caption { margin-top: .8rem; font-size: .9rem; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+    #about { animation: arrive .55s ease-out both; }
+    #about > * { animation: arrive .6s ease-out both; }
+    #about h1 { animation-delay: .08s; }
+    #about h1 + p { animation-delay: .15s; }
+    #about .actions { animation-delay: .22s; }
+    .project-detail { animation: arrive .5s ease-out both; }
+
+    .project-card {
+        transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .read-more, .button { transition: transform .22s ease, background-color .22s ease, color .22s ease; }
+    .button:active { transform: scale(.97); }
+
+    @media (hover: hover) {
+        .project-card:hover { transform: translateY(-4px); }
+        .project-card:hover .read-more { transform: translateX(5px); }
+    }
 }
 
-.email-button:hover {
-    background: transparent;
-    color: #5F8A6B;
-    text-decoration: underline;
+@keyframes arrive {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-
-
-figure {
-    margin: 30px 0;
-}
-
-.project-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-}
-
-.image-caption {
-    text-align: center;
-    font-size: 14px;
-    color: #667568;
-    margin-top: 12px;
-    line-height: 1.6;
-}
+.button span { margin-inline-start: .35em; }

@@ -1,40 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Tanisha | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav>
-        <h2>My Portfolio</h2>
+<a class="skip" href="#main">Skip to content</a>
+    <nav aria-label="Main navigation">
+        <a class="brand" href="index.html">Tanisha<span>.</span></a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <main>
+    <main id="main">
         <section id="about">
-            <h1>Hi, I'm Tanisha!</h1>
+            <p class="eyebrow">Boston University</p>
+            <h1>Hi, I’m Tanisha<span>.</span></h1>
             <p>
                 I'm a third year student at Boston University
                 interested in mathematics, machine learning,
                 optimization, and quantum computing.
             </p>
+            <div class="actions">
+                <a class="button" href="#projects">Explore my work ↓</a>
+                <a class="button secondary" href="resume.pdf" target="_blank" rel="noopener">View résumé <span aria-hidden="true">↗</span></a>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
+            <h2>Selected work</h2>
 
             <a href="gradient-descent.html" class="project-card">
                 <div class="project">
-                    <h3>Gradient Descent From Scratch ↗</h3>
+                    <p class="eyebrow">01 / Optimization</p>
+                    <h3>Gradient Descent From Scratch</h3>
 
                     <p>
                         Exploring gradient descent, optimal step-size
@@ -61,7 +66,7 @@
                 or computational projects? Feel free to reach out!
             </p>
 
-            <a href="mailto:takr2006@bu.edu" class="email-button">
+            <a href="mailto:takr2006@bu.edu" class="button">
                 Email Me ↗
             </a>
         </section>
