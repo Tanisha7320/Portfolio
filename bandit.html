@@ -23,8 +23,9 @@
         <p class="eyebrow">Linux / Security Fundamentals</p>
         <h1>OverTheWire Bandit</h1>
         <p class="project-intro">
-            I worked through OverTheWire’s Bandit wargame to Level 28, solving
-            command-line challenges in a deliberately controlled environment.
+            I worked through OverTheWire’s Bandit wargame to Level 28. Each level
+            gave me a small Linux or networking puzzle, and the notes below capture
+            what I learned and where I had to change my approach.
         </p>
         <div class="project-tags">
             <span>Linux</span>
@@ -33,19 +34,123 @@
             <span>Networking</span>
         </div>
 
-        <h2>What I practiced</h2>
+        <h2>Level notes</h2>
         <p>
-            The challenges helped me get more comfortable exploring unfamiliar
-            filesystems and combining small shell tools to locate and inspect data.
-            I practiced file and directory permissions, ownership, text searches,
-            pipelines, and working with encoded or compressed files.
+            I focused on the ideas behind each command: how the shell interprets a
+            filename, how permissions affect access, and how data moves between
+            processes. Challenge passwords are intentionally not included.
         </p>
-        <p>
-            Later levels introduced SSH keys, network clients and services, scheduled
-            jobs, and programs with elevated permissions. Working through them meant
-            reading command output carefully, forming a hypothesis, and adjusting the
-            approach when the first command did not work.
-        </p>
+
+        <div class="level-log">
+            <details class="level-entry">
+                <summary>Level 0 → 1 <span>Getting oriented in a remote shell</span></summary>
+                <p>I used <code>pwd</code> and <code>ls -al</code> to understand where I was and what files were present, then read the supplied file. The first lesson was to inspect the environment before guessing.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 1 → 2 <span>A filename that looks like an option</span></summary>
+                <p>A file named <code>-</code> is easy for a command to mistake for a flag or standard input. I learned to refer to it as <code>./-</code> so the path makes my intent explicit.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 2 → 3 <span>Spaces in filenames</span></summary>
+                <p>The shell splits unquoted text on spaces, so I had to quote the filename (or escape its spaces) to make it one path instead of several arguments.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 3 → 4 <span>Hidden files</span></summary>
+                <p>I used <code>ls -al</code> to reveal a hidden file, then used <code>file</code> to check its type before reading it. The challenge reinforced that a normal directory listing can hide useful entries.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 4 → 5 <span>Identifying the readable file</span></summary>
+                <p>With many similarly named files, I used <code>file *</code> to inspect them in one pass and pick out the human-readable text. The useful move was narrowing the candidates by file type.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 5 → 6 <span>Searching by file properties</span></summary>
+                <p>The target was buried in nested directories. I explored recursively, then used <code>find</code> with a size constraint and checked the candidate’s permissions and type. This was my first practice turning the clues into search filters.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 6 → 7 <span>Expanding the search scope</span></summary>
+                <p>My first search stayed too close to the current directory. I moved up the filesystem and combined size, owner, and group filters; redirecting permission errors with <code>2&gt;/dev/null</code> kept the useful result visible.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 7 → 8 <span>Searching a large text file</span></summary>
+                <p>I used <code>grep</code> to find the line containing a known marker in a large file. A precise search term was much faster than reading the file manually.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 8 → 9 <span>Finding the unique line</span></summary>
+                <p>I learned that <code>uniq</code> only groups adjacent duplicates, so the lines need to be sorted first: <code>sort</code> followed by <code>uniq -u</code>. The ordering of a pipeline mattered.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 9 → 10 <span>Readable strings in binary-looking data</span></summary>
+                <p>The file contained noisy, non-printable data. I filtered for printable characters and searched around the challenge’s marker rather than treating the entire file as ordinary text.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 10 → 11 <span>Base64 decoding</span></summary>
+                <p>I recognized that the text was encoded rather than encrypted, then decoded it with <code>base64</code>. This helped distinguish a reversible representation from a security mechanism.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 11 → 12 <span>ROT13 and character translation</span></summary>
+                <p>I used <code>tr</code> to map each letter to the character thirteen places away. Writing out the source and destination alphabets made the transformation easier to reason about.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 12 → 13 <span>File signatures and repeated decompression</span></summary>
+                <p>This was a more involved file-format puzzle. I moved a copy into a temporary directory, inspected bytes with a hex dump, identified formats from their signatures, and repeatedly unpacked or decompressed the result. The tricky part was checking the file again after every transformation.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 13 → 14 <span>SSH key authentication</span></summary>
+                <p>I learned to save a provided private key locally and use <code>ssh -i</code> to authenticate as the next account. This connected file handling with public-key login.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 14 → 15 <span>Connecting to a local service</span></summary>
+                <p>I tried to identify what kind of service was listening, then connected to the local host and sent the data it expected. The key insight was that the task involved a port and a protocol, not another file to search.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 15 → 16 <span>TLS with OpenSSL</span></summary>
+                <p>I used <code>openssl s_client</code> to establish a TLS connection to a host and port. I learned to use a protocol-aware client when a service expects an encrypted connection.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 16 → 17 <span>Scanning ports and testing services</span></summary>
+                <p>I scanned a small port range with <code>nmap</code>, then tested the candidate services with OpenSSL. The challenge took some trial and error: an open port alone was not enough; I had to find the service that returned the expected kind of data.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 17 → 18 <span>Comparing two files</span></summary>
+                <p>I used <code>diff</code> to compare the old and new files and identify the changed line. A comparison tool made a small difference easy to spot in otherwise similar data.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 18 → 19 <span>Interactive versus non-interactive shells</span></summary>
+                <p>An interactive login triggered shell startup behavior that immediately ended my session. I had to understand what the shell was doing automatically and request the needed command in a non-interactive way instead.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 19 → 20 <span>Setuid programs</span></summary>
+                <p>I inspected a setuid helper and learned that it runs with the file owner’s privileges. The important security lesson was how much access a program can expose if it accepts arbitrary commands.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 20 → 21 <span>Coordinating a listener and client</span></summary>
+                <p>I used Netcat to listen on a port while the provided program connected back. Starting the listener in the background with <code>&amp;</code> let both sides run at once; figuring out the order and timing took some experimentation.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 21 → 22 <span>Tracing a cron job</span></summary>
+                <p>I inspected the cron configuration and the script it launched, then followed the script to the temporary output file. This taught me to trace scheduled work from its configuration to its effects.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 22 → 23 <span>Following a script’s variable logic</span></summary>
+                <p>The cron script built a filename from a username variable. I had to read the script carefully and run through its logic with the relevant account name to predict where it wrote the result.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 23 → 24 <span>Permissions, temporary files, and cron</span></summary>
+                <p>I worked through which permissions let a scheduled script run, enter a directory, and write an output file. The subtle part was that directory execute permission controls traversal; I also compared <code>mkdir</code> with <code>mktemp</code> and saw why broad permissions such as <code>777</code> should not be the default choice.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 24 → 25 <span>Automating a PIN search</span></summary>
+                <p>I generated the four-digit PIN candidates with a shell loop and piped them through one Netcat connection. My first script approach kept opening new connections; I learned to keep one connection open and stream all candidates through it.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 25 → 26 <span>Using a pager and escaping a restricted shell</span></summary>
+                <p>I remembered that <code>more</code> becomes interactive when the output does not fit on screen. Making the terminal small enough opened that mode, from which I could launch an editor and switch to a usable shell. The challenge depended on understanding when a familiar command changes behavior.</p>
+            </details>
+            <details class="level-entry">
+                <summary>Level 26 → 27 <span>Using a setuid helper deliberately</span></summary>
+                <p>I inspected the helper’s permission bits, noticed the setuid bit, and used it to run a command with the next account’s privileges. This built on the earlier lesson about reading permission strings rather than treating them as decoration.</p>
+            </details>
+        </div>
 
         <h2>About Bandit</h2>
         <p>
