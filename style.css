@@ -560,16 +560,6 @@ p { color: var(--muted); max-width: 65ch; }
 .portrait-print img { aspect-ratio: 1.25; object-position: center 42%; }
 .river-print { width: 39%; margin-top: .7rem; transform: rotate(3deg); }
 .river-print img { aspect-ratio: .92; object-position: center 65%; }
-.photo-note {
-    align-self: flex-end;
-    margin: 0 0 1rem -.3rem;
-    color: var(--accent);
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: .98rem;
-    font-style: italic;
-    white-space: nowrap;
-    transform: rotate(-5deg);
-}
 .about-note {
     align-self: center;
     padding: clamp(1.4rem, 2.8vw, 2.5rem);
@@ -637,7 +627,6 @@ p { color: var(--muted); max-width: 65ch; }
     .scrap-hero { grid-template-columns: minmax(0, 1.3fr) minmax(15rem, .8fr); gap: 2rem; }
     .name-line { font-size: clamp(5rem, 13vw, 9rem); }
     .dog-sticker { left: clamp(17rem, 42vw, 28rem); }
-    .photo-note { display: none; }
     .scrap-project-grid { grid-template-columns: 1fr 1fr; }
     .scrap-project-card:last-child { grid-column: 1 / -1; min-height: 0; }
 }
@@ -652,7 +641,7 @@ p { color: var(--muted); max-width: 65ch; }
     .hello-line { font-size: clamp(3rem, 14vw, 5rem); }
     .name-line { font-size: clamp(4.25rem, 17vw, 7rem); }
     .dog-sticker { top: 39%; left: min(70vw, 19rem); width: 3.25rem; }
-    .photo-stack { gap: .55rem; margin-top: 1.25rem; padding-inline: .1rem; }
+    .photo-stack { gap: .55rem; margin-top: 1.25rem; padding: .2rem .1rem 1.5rem; }
     .polaroid { padding: .4rem .4rem .6rem; }
     .portrait-print { width: 47%; }
     .portrait-print img { aspect-ratio: .93; }
