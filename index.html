@@ -3,118 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanisha | Portfolio</title>
+    <meta name="description" content="Tanisha Krishnaraj — Boston University student interested in mathematics, machine learning, optimization, and quantum computing.">
+    <title>Tanisha Krishnaraj | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
+<body class="scrapbook-home">
 <a class="skip" href="#main">Skip to content</a>
+
+<header class="scrap-header">
+    <a class="scrap-brand" href="index.html">✳ <span>Tanisha</span></a>
     <nav aria-label="Main navigation">
-        <a class="brand" href="index.html">Tanisha<span>.</span></a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <a href="#projects">Projects</a>
+        <a href="resume.pdf" download>Download résumé <span aria-hidden="true">↗</span></a>
     </nav>
+</header>
 
-    <main id="main">
-        <section id="about">
-            <p class="eyebrow">Boston University</p>
-            <h1>Hi, I’m Tanisha<span>.</span></h1>
-            <p>
-                I'm a third year student at Boston University
-                interested in mathematics, machine learning,
-                optimization, and quantum computing.
-            </p>
-            <p>I enjoy working from first principles to understand why things work, and I’m drawn to problems at the intersection of mathematics and computer science.</p>
-            <div class="actions">
-                <a class="button" href="#projects">Explore my work ↓</a>
-                <a class="button secondary" href="resume.pdf" target="_blank" rel="noopener">View résumé <span aria-hidden="true">↗</span></a>
+<main id="main" class="scrap-main">
+    <section class="scrap-hero" aria-labelledby="hero-title">
+        <div class="scrap-intro">
+            <p class="scrap-eyebrow">Boston University · Mathematics &amp; Data Science</p>
+            <h1 id="hero-title">
+                <span class="hello-line">hey, I’m</span>
+                <span class="name-line">Tanisha<span class="name-period">.</span></span>
+                <img class="dog-sticker" src="assets/dog.svg" alt="" aria-hidden="true">
+            </h1>
+            <div class="photo-stack" aria-label="A couple of moments I love">
+                <figure class="polaroid portrait-print">
+                    <img src="image(1).jpeg" alt="Tanisha smiling while trying something new">
+                    <figcaption>happiest trying something new.</figcaption>
+                </figure>
+                <figure class="polaroid river-print">
+                    <img src="esplanade.jpg" alt="The Charles River Esplanade at sunset, with sailboats on the water">
+                    <figcaption>my favorite running route.</figcaption>
+                </figure>
+                <span class="photo-note" aria-hidden="true">a few things that feel like me ↗</span>
             </div>
-        </section>
+        </div>
 
-        <section id="projects">
-            <h2>Selected work</h2>
+        <aside class="about-note" aria-labelledby="about-title">
+            <p class="scrap-eyebrow" id="about-title">A little about me</p>
+            <p class="about-copy">
+                I’m a third-year student at Boston University interested in mathematics,
+                machine learning, optimization, and quantum computing.
+            </p>
+            <p>
+                I enjoy working from first principles to understand why things work,
+                and I’m drawn to problems at the intersection of mathematics and
+                computer science.
+            </p>
+            <div class="about-rule"></div>
+            <p class="about-signoff">Usually with a new question in mind.</p>
+        </aside>
+    </section>
 
-            <a href="gradient-descent.html" class="project-card">
-                <div class="project">
-                    <p class="eyebrow">01 / Optimization</p>
+    <section id="projects" class="scrap-projects">
+        <div class="scrap-section-head">
+            <p class="scrap-eyebrow">Things I’ve been working on</p>
+            <h2>Projects<span>.</span></h2>
+        </div>
+        <div class="scrap-project-grid">
+            <a href="gradient-descent.html" class="scrap-project-card">
+                <span class="scrap-project-num">01</span>
+                <div>
+                    <p class="scrap-eyebrow">Python · Optimization</p>
                     <h3>Gradient Descent From Scratch</h3>
-
-                    <p>
-                        Reached the same stopping threshold in 176 updates instead of 5,216
-                        by choosing a step size based on the loss function’s curvature.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Optimization</span>
-                        <span>Numerical Methods</span>
-                    </div>
-
-                    <span class="read-more">Explore Project →</span>
+                    <p>Reached the same stopping threshold in 176 updates instead of 5,216 by choosing a step size based on the loss function’s curvature.</p>
+                    <span class="scrap-link">Read about it <span aria-hidden="true">↗</span></span>
                 </div>
             </a>
-
-            <a href="prospect-theory.html" class="project-card">
-                <div class="project">
-                    <p class="eyebrow">02 / Reinforcement Learning</p>
+            <a href="prospect-theory.html" class="scrap-project-card">
+                <span class="scrap-project-num">02</span>
+                <div>
+                    <p class="scrap-eyebrow">Python · Q-learning</p>
                     <h3>Prospect Theory in Q-Learning</h3>
-
-                    <p>
-                        Compared standard and loss-averse Q-learning agents on Gymnasium’s
-                        slippery FrozenLake.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Gymnasium</span>
-                        <span>Behavioral Economics</span>
-                    </div>
-
-                    <span class="read-more">Explore Project →</span>
+                    <p>Compared standard and loss-averse Q-learning agents on Gymnasium’s slippery FrozenLake.</p>
+                    <span class="scrap-link">Read about it <span aria-hidden="true">↗</span></span>
                 </div>
             </a>
-        </section>
-
-        <section id="practice">
-            <h2>Technical practice</h2>
-
-            <a href="bandit.html" class="project-card">
-                <div class="project">
-                    <p class="eyebrow">Linux / Security Fundamentals</p>
+            <a href="bandit.html" class="scrap-project-card">
+                <span class="scrap-project-num">03</span>
+                <div>
+                    <p class="scrap-eyebrow">Linux · Command line</p>
                     <h3>OverTheWire Bandit</h3>
-
-                    <p>
-                        Worked through Bandit to Level 28, practicing Linux command-line
-                        tools, file permissions, shell pipelines, and basic networking.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Linux</span>
-                        <span>Bash</span>
-                        <span>Networking</span>
-                    </div>
-
-                    <span class="read-more">What I practiced →</span>
+                    <p>Notes from working through Bandit to Level 28: what I learned, what tripped me up, and how I got unstuck.</p>
+                    <span class="scrap-link">See level notes <span aria-hidden="true">↗</span></span>
                 </div>
             </a>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact">
-            <h2>Get in Touch</h2>
+    <section id="contact" class="scrap-contact">
+        <div>
+            <p class="scrap-eyebrow">Let’s connect</p>
+            <h2>Get in touch<span>.</span></h2>
+            <p>If you’d like to talk about a project, math, or anything on this page, I’d love to hear from you.</p>
+        </div>
+        <div class="contact-links">
+            <a href="mailto:takr2006@bu.edu">Email me <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/Tanisha7320" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+    </section>
+</main>
 
-            <p>
-                Interested in discussing mathematics, machine learning,
-                or computational projects? Feel free to reach out!
-            </p>
-
-            <div class="actions">
-                <a href="mailto:takr2006@bu.edu" class="button">Email Me ↗</a>
-                <a href="https://github.com/Tanisha7320" class="button secondary">GitHub ↗</a>
-            </div>
-        </section>
-    </main>
+<footer class="scrap-footer">
+    <span>Tanisha · Boston</span>
+    <a href="#main">Back to top ↑</a>
+</footer>
 </body>
 </html>

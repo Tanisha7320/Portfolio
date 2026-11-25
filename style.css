@@ -419,3 +419,251 @@ p { color: var(--muted); max-width: 65ch; }
     .site-footer { flex-wrap: wrap; }
     .site-footer p { order: 3; width: 100%; }
 }
+
+/* Scrapbook portfolio direction */
+.scrapbook-home {
+    --paper: #f4f3eb;
+    --ink: #22231f;
+    --muted: #5f6259;
+    --accent: #55714f;
+    --line: #d4d8c9;
+    --soft: #e6ebdd;
+    --coral: #e45a3b;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 68% 32%, #e6eadf 0, transparent 42%),
+        var(--paper);
+    color: var(--ink);
+    cursor: url("assets/runner-cursor.svg") 5 5, auto;
+}
+.scrapbook-home a, .scrapbook-home button { cursor: url("assets/runner-cursor.svg") 5 5, pointer; }
+.scrap-header, .scrap-main, .scrap-footer {
+    width: min(100% - 4rem, 88rem);
+    margin-inline: auto;
+}
+.scrap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 5rem;
+    border-bottom: 1px solid var(--line);
+}
+.scrap-brand {
+    color: var(--ink);
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 700;
+    text-decoration: none;
+}
+.scrap-brand:first-letter { color: var(--accent); }
+.scrap-header nav { display: flex; justify-content: flex-end; gap: clamp(1.2rem, 3vw, 3rem); width: auto; margin: 0; padding: 0; border: 0; }
+.scrap-header nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+    font-size: .78rem;
+    font-weight: 750;
+    letter-spacing: .08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.scrap-header nav a:hover { color: var(--accent); }
+.scrap-header nav a span { margin-left: .3rem; color: var(--accent); }
+.scrap-main { padding-block: 0 4rem; }
+.scrap-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(16rem, .72fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+    min-height: min(54rem, calc(100vh - 5rem));
+    padding-block: clamp(2.25rem, 5vw, 4rem) clamp(3rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--line);
+}
+.scrap-intro { position: relative; min-width: 0; }
+.scrap-eyebrow {
+    margin: 0 0 1.1rem;
+    color: var(--ink);
+    font-size: .74rem;
+    font-weight: 750;
+    letter-spacing: .16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.scrap-intro h1 { position: relative; margin: 0; }
+.hello-line {
+    display: block;
+    margin-bottom: -.04em;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(3.2rem, 7vw, 7rem);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -.075em;
+    line-height: .95;
+}
+.name-line {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(5rem, 13vw, 12rem);
+    font-weight: 800;
+    letter-spacing: -.09em;
+    line-height: .95;
+}
+.name-period { color: var(--coral); letter-spacing: -.08em; }
+.name-line::after {
+    position: absolute;
+    right: 0;
+    bottom: -.09em;
+    left: .02em;
+    height: .13em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 28'%3E%3Cpath d='M2 16 C36 0 55 26 92 13 S150 1 183 15 242 27 278 12 337 2 372 16 435 25 498 8' fill='none' stroke='%23e45a3b' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    content: "";
+}
+.dog-sticker {
+    position: absolute;
+    top: 39%;
+    left: clamp(17rem, 38vw, 36rem);
+    width: clamp(3.3rem, 6vw, 5.25rem);
+    transform: rotate(8deg);
+    filter: drop-shadow(0 5px 2px #22231f14);
+}
+.photo-stack {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(.8rem, 2vw, 1.8rem);
+    width: min(100%, 59rem);
+    margin-top: clamp(1.4rem, 3vw, 2.8rem);
+    padding: .2rem .5rem 1.5rem;
+}
+.polaroid {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: .65rem .65rem .8rem;
+    background: #fffefa;
+    box-shadow: 0 13px 30px #353a3026;
+}
+.polaroid img { display: block; width: 100%; background: var(--soft); object-fit: cover; }
+.polaroid figcaption {
+    padding: .65rem .15rem .05rem;
+    color: #4c5147;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(.72rem, 1.15vw, 1rem);
+    font-style: italic;
+    line-height: 1.2;
+}
+.portrait-print { width: 44%; transform: rotate(-4deg) translateY(.3rem); }
+.portrait-print img { aspect-ratio: 1.25; object-position: center 42%; }
+.river-print { width: 39%; margin-top: .7rem; transform: rotate(3deg); }
+.river-print img { aspect-ratio: .92; object-position: center 65%; }
+.photo-note {
+    align-self: flex-end;
+    margin: 0 0 1rem -.3rem;
+    color: var(--accent);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: .98rem;
+    font-style: italic;
+    white-space: nowrap;
+    transform: rotate(-5deg);
+}
+.about-note {
+    align-self: center;
+    padding: clamp(1.4rem, 2.8vw, 2.5rem);
+    border: 1px solid #d6ddcf;
+    border-radius: 1rem;
+    background: #e8eee2e8;
+    box-shadow: 0 18px 45px #4e63450c;
+}
+.about-note .scrap-eyebrow { color: var(--accent); }
+.about-note p:not(.scrap-eyebrow) { margin: 0; color: #424940; font-size: clamp(.98rem, 1.2vw, 1.08rem); line-height: 1.8; }
+.about-note .about-copy { margin-bottom: 1.1rem !important; color: var(--ink) !important; font-size: clamp(1.08rem, 1.35vw, 1.2rem) !important; font-weight: 550; line-height: 1.65 !important; }
+.about-rule { width: 3rem; height: 2px; margin: 1.4rem 0 .8rem; background: var(--coral); }
+.about-note .about-signoff { color: var(--accent) !important; font-family: Georgia, 'Times New Roman', serif; font-size: .95rem !important; font-style: italic; }
+.scrap-projects { padding-top: clamp(3.5rem, 7vw, 6.5rem); }
+.scrap-section-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 1.5rem; }
+.scrap-section-head .scrap-eyebrow { margin-bottom: .35rem; color: var(--accent); }
+.scrap-section-head h2, .scrap-contact h2 { margin: 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; letter-spacing: -.075em; line-height: 1; }
+.scrap-section-head h2 span, .scrap-contact h2 span { color: var(--coral); }
+.scrap-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.scrap-project-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .95rem;
+    min-height: 17rem;
+    padding: clamp(1.15rem, 2vw, 1.7rem);
+    border: 1px solid var(--line);
+    border-radius: .7rem;
+    background: #fbfbf6;
+    color: inherit;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.scrap-project-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 30px #364b3317; }
+.scrap-project-num { color: var(--accent); font-size: .72rem; font-weight: 750; letter-spacing: .08em; }
+.scrap-project-card .scrap-eyebrow { margin-bottom: .65rem; color: var(--muted); font-size: .66rem; }
+.scrap-project-card h3 { margin: 0 0 .8rem; color: var(--ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
+.scrap-project-card p:not(.scrap-eyebrow) { margin: 0; font-size: .9rem; line-height: 1.65; }
+.scrap-link { display: inline-block; margin-top: 1.2rem; color: var(--accent); font-size: .82rem; font-weight: 750; }
+.scrap-link span { color: var(--coral); }
+.scrap-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin-top: clamp(4rem, 8vw, 7rem);
+    padding: clamp(1.6rem, 4vw, 3.5rem);
+    border-radius: .9rem;
+    background: #e1e9d9;
+}
+.scrap-contact .scrap-eyebrow { color: var(--accent); }
+.scrap-contact h2 { font-size: clamp(2.6rem, 5.5vw, 4.5rem); }
+.scrap-contact > div:first-child > p:last-child { max-width: 35rem; margin: 1rem 0 0; }
+.contact-links { display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; min-width: 10rem; }
+.contact-links a { color: var(--ink); font-size: 1.05rem; font-weight: 700; text-decoration: none; }
+.contact-links a span { color: var(--accent); }
+.contact-links a:hover { text-decoration: underline; text-underline-offset: .25em; }
+.scrap-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.2rem 2rem; color: var(--muted); font-size: .78rem; }
+.scrap-footer a { color: var(--ink); text-decoration: none; }
+.scrap-footer a:hover { text-decoration: underline; }
+@media (pointer: fine) {
+    .scrapbook-home { cursor: url("assets/runner-cursor.svg") 5 5, auto; }
+    .scrapbook-home a, .scrapbook-home button { cursor: url("assets/runner-cursor.svg") 5 5, pointer; }
+}
+@media (max-width: 900px) {
+    .scrap-hero { grid-template-columns: minmax(0, 1.3fr) minmax(15rem, .8fr); gap: 2rem; }
+    .name-line { font-size: clamp(5rem, 13vw, 9rem); }
+    .dog-sticker { left: clamp(17rem, 42vw, 28rem); }
+    .photo-note { display: none; }
+    .scrap-project-grid { grid-template-columns: 1fr 1fr; }
+    .scrap-project-card:last-child { grid-column: 1 / -1; min-height: 0; }
+}
+@media (max-width: 620px) {
+    .scrap-header, .scrap-main, .scrap-footer { width: min(100% - 2rem, 88rem); }
+    .scrap-header { min-height: 4.3rem; }
+    .scrap-header nav { gap: .8rem; }
+    .scrap-header nav a { font-size: .66rem; letter-spacing: .04em; }
+    .scrap-brand { font-size: 1.1rem; }
+    .scrap-hero { display: flex; flex-direction: column; align-items: stretch; gap: 2rem; min-height: 0; padding-block: 2.5rem 3rem; }
+    .scrap-eyebrow { font-size: .65rem; }
+    .hello-line { font-size: clamp(3rem, 14vw, 5rem); }
+    .name-line { font-size: clamp(4.25rem, 17vw, 7rem); }
+    .dog-sticker { top: 39%; left: min(70vw, 19rem); width: 3.25rem; }
+    .photo-stack { gap: .55rem; margin-top: 1.25rem; padding-inline: .1rem; }
+    .polaroid { padding: .4rem .4rem .6rem; }
+    .portrait-print { width: 47%; }
+    .portrait-print img { aspect-ratio: .93; }
+    .river-print { width: 42%; margin-top: .45rem; }
+    .river-print img { aspect-ratio: .8; }
+    .polaroid figcaption { padding-top: .5rem; font-size: .65rem; }
+    .about-note { padding: 1.3rem; }
+    .about-note p:not(.scrap-eyebrow), .about-note .about-copy { font-size: .96rem !important; }
+    .scrap-section-head h2 { font-size: 3rem; }
+    .scrap-project-grid { grid-template-columns: 1fr; }
+    .scrap-project-card, .scrap-project-card:last-child { grid-column: auto; min-height: 0; }
+    .scrap-contact { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .contact-links { flex-direction: row; align-items: flex-start; gap: 1.4rem; }
+}
