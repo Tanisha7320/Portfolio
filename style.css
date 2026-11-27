@@ -434,9 +434,7 @@ p { color: var(--muted); max-width: 65ch; }
         radial-gradient(ellipse at 68% 32%, #e6eadf 0, transparent 42%),
         var(--paper);
     color: var(--ink);
-    cursor: url("assets/runner-cursor.svg") 5 5, auto;
 }
-.scrapbook-home a, .scrapbook-home button { cursor: url("assets/runner-cursor.svg") 5 5, pointer; }
 .scrap-header, .scrap-main, .scrap-footer {
     width: min(100% - 4rem, 88rem);
     margin-inline: auto;
@@ -620,8 +618,9 @@ p { color: var(--muted); max-width: 65ch; }
 .scrap-footer a { color: var(--ink); text-decoration: none; }
 .scrap-footer a:hover { text-decoration: underline; }
 @media (pointer: fine) {
-    .scrapbook-home { cursor: url("assets/runner-cursor.svg") 5 5, auto; }
-    .scrapbook-home a, .scrapbook-home button { cursor: url("assets/runner-cursor.svg") 5 5, pointer; }
+    :root { --circle-cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%228%22%20r%3D%225%22%20fill%3D%22%23345c40%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.5%22%2F%3E%3C%2Fsvg%3E") 8 8; }
+    html { cursor: var(--circle-cursor), auto; }
+    a, button, summary { cursor: var(--circle-cursor), pointer; }
 }
 @media (max-width: 900px) {
     .scrap-hero { grid-template-columns: minmax(0, 1.3fr) minmax(15rem, .8fr); gap: 2rem; }
